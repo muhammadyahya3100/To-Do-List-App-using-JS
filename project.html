@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do List App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #7ee8fa, #80ff72);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: white;
+      padding: 25px 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      width: 320px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    form {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      border: 2px solid #00b894;
+      border-radius: 8px;
+      outline: none;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #00b894;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      margin-left: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #019874;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      background: #f1f1f1;
+      margin-bottom: 8px;
+      padding: 10px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: 0.3s;
+    }
+
+    li:hover {
+      background: #e0f7fa;
+    }
+
+    li button {
+      background-color: #ff7675;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    li button:hover {
+      background-color: #d63031;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>To Do List App</h1>
+    <form id="myform">
+      <input id="myinput" type="text" placeholder="Add a new task...">
+      <button>Add</button>
+    </form>
+    <h3>To Do List</h3>
+    <ul id="myitem"></ul>
+  </div>
+
+  <script>
+    var myform = document.getElementById("myform");
+    var myinput = document.getElementById("myinput");
+    var myitem = document.getElementById("myitem");
+
+    myform.addEventListener("submit", function(event) {
+      event.preventDefault();
+      addItem(myinput.value);
+    });
+
+    function addItem(itemText) {
+      var li = `<li>🛒${itemText} <button onclick="deleteItem(this)">Delete</button></li>`;
+      myitem.insertAdjacentHTML("beforeend", li);
+      myinput.value = "";
+      myinput.focus();
+    }
+
+    function deleteItem(button) {
+      var li = button.parentElement;
+      myitem.removeChild(li);
+    }
+  </script>
+</body>
+</html>
